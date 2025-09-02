@@ -18,7 +18,7 @@ resource "google_project" "default" {
 resource "google_project_service" "default" {
   provider = google-beta.no_user_project_override
   //project  = data.google_project.my_project.id
-  project = google_firebase_project.default.id
+  project = google_project.default.project_id
   for_each = toset([
     "cloudbilling.googleapis.com",
     "cloudresourcemanager.googleapis.com",
@@ -38,7 +38,7 @@ resource "google_project_service" "default" {
 
 resource "google_project_iam_member" "cloudfunctions_admin" {
   //project = data.google_project.my_project.id
-  project = google_project.default.id
+  project = google_project.default.project_id
   role    = "roles/cloudfunctions.admin"
   member  = "user:bertrand.ntumba@gmail.com"
 }
