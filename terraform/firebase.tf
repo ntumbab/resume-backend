@@ -17,7 +17,7 @@ resource "google_firestore_database" "database" {
 }
 
 resource "google_firestore_document" "mydoc" {
-  project     = google_project.default.project_id
+  project     = data.google_project.my_project.id
   database    = google_firestore_database.database.name
   collection  = "data"
   document_id = "visitors"
