@@ -9,6 +9,7 @@ resource "google_firebase_project" "default" {
   ]
 }
 
+
 resource "google_firestore_database" "database" {
   //project                           = google_firebase_project.default.id
   name                              = "(default)"
