@@ -52,7 +52,7 @@ steps:
     - |
         echo "Running apply ..."
         cd terraform
-        terraform apply -input=false -auto-approve -out=tfplan
+        terraform apply -input=false -auto-approve tfplan
 
 options:
   logging: CLOUD_LOGGING_ONLY
