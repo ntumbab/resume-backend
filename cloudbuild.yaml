@@ -7,7 +7,6 @@ steps:
 # Initialize Terraform
 - id: terraform init
   name: hashicorp/terraform:1.4.2
-  #args: ['init']
   entrypoint: sh
   args:
     - '-c'
@@ -30,7 +29,6 @@ steps:
 # Generate and show a plan
 - id: terraform plan
   name: hashicorp/terraform:1.4.2
-  #args: ['plan']
   entrypoint: sh
   env:
     - "TF_VAR_billing_account=$_BILLING"
@@ -41,6 +39,20 @@ steps:
         echo "Running plan ..."
         cd terraform
         terraform plan -input=false -out=tfplan
+
+# Generate and show a plan
+- id: terraform apply
+  name: hashicorp/terraform:1.4.2
+  entrypoint: sh
+  env:
+    - "TF_VAR_billing_account=$_BILLING"
+  secretEnv: ["_BILLING"]
+  args:
+    - '-c'
+    - |
+        echo "Running apply ..."
+        cd terraform
+        terraform aply -input=false -auto-approve -out=tfplan
 
 options:
   logging: CLOUD_LOGGING_ONLY
