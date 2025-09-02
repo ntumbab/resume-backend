@@ -1,7 +1,7 @@
 availableSecrets:
   secretManager:
     - versionName: projects/529419856712/secrets/billing_account/versions/latest
-      env: "BILLING_ACCOUNT"
+      env: "BILLING"
 
 steps:
 # Initialize Terraform
@@ -33,8 +33,8 @@ steps:
   #args: ['plan']
   entrypoint: sh
   env:
-    - "TF_VAR_billing_account=$BILLING_ACCOUNT"
-  secretEnv: ["BILLING_ACCOUNT"]
+    - "TF_VAR_billing_account=$BILLING"
+  secretEnv: ["BILLING"]
   args:
     - '-c'
     - |
