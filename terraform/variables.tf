@@ -7,7 +7,7 @@ variable "region" {
 variable "project_id" {
   type = string
   description = "GCP project id."
-  default = "resume-challenge-project"
+  default = "cicd-project"
 }
 
 variable "billing_account" {
