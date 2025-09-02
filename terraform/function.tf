@@ -1,15 +1,15 @@
-/*resource "google_storage_bucket" "function_bucket" {
+resource "google_storage_bucket" "function_bucket" {
   name     = "${var.project_id}-function-bucket"
   location = var.region
-}*/
+}
 data "google_storage_bucket" "function_bucket" {
   name = "${var.project_id}-function-bucket"
 }
 
 resource "google_storage_bucket_object" "function_archive" {
   name   = "function.zip"
-  //bucket = google_storage_bucket.function_bucket.name
-  bucket = data.google_storage_bucket.function_bucket.name
+  bucket = google_storage_bucket.function_bucket.name
+  //bucket = data.google_storage_bucket.function_bucket.name
   source = "../function/function.zip"
 }
 
@@ -23,8 +23,8 @@ build_config {
     entry_point = "helloHttp"  # Set the entry point 
     source {
       storage_source {
-        //bucket = google_storage_bucket.function_bucket.name
-        bucket = data.google_storage_bucket.function_bucket.name
+        bucket = google_storage_bucket.function_bucket.name
+        //bucket = data.google_storage_bucket.function_bucket.name
         object = google_storage_bucket_object.function_archive.name
       }
     }

@@ -9,6 +9,11 @@ variable "project_id" {
   description = "GCP project id."
   default = "cicd-project"
 }
+variable "project_name" {
+  type = string
+  description = "GCP project id."
+  default = "My CICD Project"
+}
 
 variable "billing_account" {
   type = string
