@@ -1,5 +1,5 @@
 # Creates a new Google Cloud project.
-resource "google_project" "default" {
+/*resource "google_project" "default" {
   provider   = google-beta.no_user_project_override
 
   name       = "Resume Challenge"
@@ -12,12 +12,12 @@ resource "google_project" "default" {
   labels = {
     "firebase" = "enabled"
   }
-}
+}*/
 
 # Enables required APIs.
 resource "google_project_service" "default" {
   provider = google-beta.no_user_project_override
-  project  = google_project.default.project_id
+  project  = data.google_project.default.project_id
   for_each = toset([
     "cloudbilling.googleapis.com",
     "cloudresourcemanager.googleapis.com",
@@ -36,7 +36,7 @@ resource "google_project_service" "default" {
 }
 
 resource "google_project_iam_member" "cloudfunctions_admin" {
-  project = var.project_id
+  project = data.google_project.my_project.id
   role    = "roles/cloudfunctions.admin"
   member  = "user:bertrand.ntumba@gmail.com"
 }
