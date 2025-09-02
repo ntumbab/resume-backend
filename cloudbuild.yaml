@@ -1,0 +1,23 @@
+steps:
+# Initialize Terraform
+- id: 'terraform init'
+  name: 'hashicorp/terraform:1.4.2'
+  #args: ['init']
+  args:
+    - '-c'
+    - |
+        echo "Running init ..."
+        cd terraform/
+        terraform init
+
+# Generate and show a plan
+- id: 'terraform plan'
+  name: 'hashicorp/terraform:1.4.2'
+  #args: ['plan']
+  args:
+    - '-c'
+    - |
+        echo "Running plan ..."
+        cd terraform/
+        terraform plan
+        
