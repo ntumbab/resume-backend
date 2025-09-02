@@ -1,24 +1,37 @@
 steps:
 # Initialize Terraform
-- id: 'terraform init'
-  name: 'hashicorp/terraform:1.4.2'
+- id: terraform init
+  name: hashicorp/terraform:1.4.2
   #args: ['init']
+  entrypoint: sh
   args:
     - '-c'
     - |
         echo "Running init ..."
-        cd terraform/
+        cd terraform
         terraform init
 
+  # Step 2: Validate Terraform code
+- id: terraform-validate
+  name: hashicorp/terraform:1.4.2
+  entrypoint: sh
+  args:
+    - -c
+    - |
+      cd terraform
+      terraform validate
+
+
 # Generate and show a plan
-- id: 'terraform plan'
-  name: 'hashicorp/terraform:1.4.2'
+- id: terraform plan
+  name: hashicorp/terraform:1.4.2
   #args: ['plan']
+  entrypoint: sh
   args:
     - '-c'
     - |
         echo "Running plan ..."
-        cd terraform/
+        cd terraform
         terraform plan
 
 options:
