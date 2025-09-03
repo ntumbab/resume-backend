@@ -9,7 +9,6 @@ output "project_name" {
 
 data "google_storage_bucket" "function_bucket" {
   name = "${var.project_id}-function-bucket"
-  location = var.region
 }
 
 output "bucket_name" {
