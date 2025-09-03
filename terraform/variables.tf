@@ -7,12 +7,13 @@ variable "region" {
 variable "project_id" {
   type = string
   description = "GCP project id."
-  default = "cicd-project"
+  default = "resume-challenge-project"
 }
+
 variable "project_name" {
   type = string
-  description = "GCP project id."
-  default = "My CICD Project"
+  description = "GCP project name."
+  default = "Resume Challenge Project"
 }
 
 variable "billing_account" {
