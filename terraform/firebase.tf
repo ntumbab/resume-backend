@@ -19,10 +19,10 @@ resource "google_firebase_project" "default" {
 
 
 
-resource "google_firestore_document" "mydoc" {
+/*resource "google_firestore_document" "mydoc" {
   project     = data.google_project.my_project.project_id
   database    = "(default)"
   collection  = "data"
   document_id = "visitors"
   fields      = "{\"numberExample\":{\"integerValue\":0}}"
-}
+}*/

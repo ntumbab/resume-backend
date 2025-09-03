@@ -10,6 +10,7 @@ resource "google_storage_bucket_object" "function_archive" {
   source = "../function/function.zip"
 }
 
+/*
 resource "google_cloudfunctions2_function" "helloHttp" {
   name        = "visitor-function"
   description = "Function reading and updating the visitor count"
@@ -51,3 +52,4 @@ resource "google_cloud_run_service_iam_member" "helloHttp_public" {
 output "function_url" {
   value = google_cloudfunctions2_function.helloHttp.url
 }
+*/
