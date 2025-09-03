@@ -2,6 +2,19 @@
 resource "google_project" "default" {
   provider   = google-beta.no_user_project_override
 
+  name       = "Resume Challenge"
+  project_id = "resume-challenge-project"
+  billing_account = var.billing_account
+
+  # Required for the project to display in any list of Firebase projects.
+  labels = {
+    "firebase" = "enabled"
+  }
+}
+
+resource "google_project" "nouveau" {
+  provider   = google-beta.no_user_project_override
+
   name       = var.project_name
   project_id = var.project_id
   billing_account = var.billing_account
