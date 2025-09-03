@@ -1,18 +1,4 @@
-# Creates a new Google Cloud project.
-resource "google_project" "default" {
-  provider   = google-beta.no_user_project_override
-
-  name       = "Resume Challenge"
-  project_id = "resume-challenge-project"
-  billing_account = var.billing_account
-
-  # Required for the project to display in any list of Firebase projects.
-  labels = {
-    "firebase" = "enabled"
-  }
-}
-
-resource "google_project" "nouveau" {
+/*resource "google_project" "default" {
   provider   = google-beta.no_user_project_override
 
   name       = var.project_name
@@ -23,13 +9,13 @@ resource "google_project" "nouveau" {
   labels = {
     "firebase" = "enabled"
   }
-}
+}*/
 
 # Enables required APIs.
 resource "google_project_service" "default" {
   provider = google-beta.no_user_project_override
-  //project  = data.google_project.my_project.id
-  project = google_project.default.project_id
+  project  = data.google_project.my_project.project_id
+  //project = google_project.default.project_id
   for_each = toset([
     "cloudbilling.googleapis.com",
     "cloudresourcemanager.googleapis.com",
@@ -48,8 +34,8 @@ resource "google_project_service" "default" {
 }
 
 resource "google_project_iam_member" "cloudfunctions_admin" {
-  //project = data.google_project.my_project.id
-  project = google_project.default.project_id
+  project = data.google_project.my_project.project_id
+  //project = google_project.default.project_id
   role    = "roles/cloudfunctions.admin"
   member  = "user:bertrand.ntumba@gmail.com"
 }
