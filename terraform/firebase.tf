@@ -17,15 +17,11 @@ resource "google_firebase_project" "default" {
   type                              = "FIRESTORE_NATIVE"
 }*/
 
-data "google_firestore_database" "database" {
-  name     = "(default)"
-  project  = "resume-challenge-project"
-}
 
 
 resource "google_firestore_document" "mydoc" {
   project     = data.google_project.my_project.project_id
-  database    = data.google_firestore_database.database.name
+  database    = "(default)"
   collection  = "data"
   document_id = "visitors"
   fields      = "{\"numberExample\":{\"integerValue\":0}}"
