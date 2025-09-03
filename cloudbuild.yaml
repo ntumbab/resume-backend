@@ -4,6 +4,15 @@ availableSecrets:
       env: "_BILLING"
 
 steps:
+- id: zip
+  name: gcr.io/cloud-builders/gsutil
+  entrypoint: sh
+  args:
+    - '-c'
+    - |
+      cd function
+      zip -r function.zip index.js package.json
+
 # Initialize Terraform
 - id: terraform init
   name: hashicorp/terraform:1.4.2

@@ -30,3 +30,6 @@ override.tf.json
 
 # Lock file (can be committed if you want provider version pinning)
 .terraform.lock.hcl
+
+# zip packages
+*.zip
