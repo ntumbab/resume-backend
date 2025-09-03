@@ -4,8 +4,6 @@ resource "google_project" "default" {
 
   name       = var.project_name
   project_id = var.project_id
-  # Required for any service that requires the Blaze pricing plan
-  # (like Firebase Authentication with GCIP)
   billing_account = var.billing_account
 
   # Required for the project to display in any list of Firebase projects.
