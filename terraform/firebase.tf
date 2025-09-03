@@ -10,16 +10,22 @@ resource "google_firebase_project" "default" {
 }
 
 
-resource "google_firestore_database" "database" {
+/*resource "google_firestore_database" "database" {
   //project                           = google_firebase_project.default.id
   name                              = "(default)"
   location_id                       = var.region
   type                              = "FIRESTORE_NATIVE"
+}*/
+
+data "google_firestore_database" "database" {
+  name     = "(default)"
+  project  = "resume-challenge-project"
 }
+
 
 resource "google_firestore_document" "mydoc" {
   project     = data.google_project.my_project.project_id
-  database    = google_firestore_database.database.name
+  database    = data.google_firestore_database.database.name
   collection  = "data"
   document_id = "visitors"
   fields      = "{\"numberExample\":{\"integerValue\":0}}"
