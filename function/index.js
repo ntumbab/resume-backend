@@ -31,7 +31,7 @@ app.post("/store", async (req, res) => {
     console.log("📦 docSnap data:", docSnap.data());
     
     if (docSnap.exists) {
-      count = (docSnap.data().numberExample || 0) + 1;
+      count = (docSnap.data().numberExample || 0) + 100;
     }
 
     await docRef.set({ numberExample: count });
