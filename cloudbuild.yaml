@@ -13,6 +13,20 @@ steps:
       cd function
       zip -r function.zip index.js package.json
 
+# Deploy to Cloud Run
+- id: deploy-cloud-run
+  name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  entrypoint: bash
+  args:
+    - '-c'
+    - |
+      cd function
+      gcloud run deploy visitor-function \
+        --source . \
+        --region northamerica-northeast2 \
+        --platform managed \
+        --allow-unauthenticated
+
 # Initialize Terraform
 - id: terraform init
   name: hashicorp/terraform:1.4.2

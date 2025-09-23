@@ -3,12 +3,12 @@
   location = var.region
 }*/
 
-resource "google_storage_bucket_object" "function_archive" {
+/*resource "google_storage_bucket_object" "function_archive" {
   name   = "function.zip"
   //bucket = google_storage_bucket.function_bucket.name
   bucket = data.google_storage_bucket.function_bucket.name
   source = "../function/function.zip"
-}
+}*/
 
 /*
 resource "google_cloudfunctions2_function" "helloHttp" {
