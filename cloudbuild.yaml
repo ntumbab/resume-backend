@@ -21,11 +21,13 @@ steps:
     - '-c'
     - |
       cd function
-      gcloud run deploy visitor-function \
+      gcloud functions deploy visitor-function \
         --source . \
         --region northamerica-northeast2 \
-        --platform managed \
-        --allow-unauthenticated
+        --runtime nodejs20 \
+        --trigger-http \
+        --allow-unauthenticated \
+        --entry-point helloHttp
 
 # Initialize Terraform
 - id: terraform init
